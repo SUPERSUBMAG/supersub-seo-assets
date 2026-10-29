@@ -1,7 +1,7 @@
 /*!
  * SUPERSUB — SEO Phase 1C-A: WebSite + Organization + SearchAction
  * Site-wide JSON-LD injector
- * Version: 1.1.0 (A20 Paket C: einheitliche WebSite.@id und sameAs)
+ * Version: 1.2.0 (A21 Paket D: WebSite.url = Domain-Startseite, WebSite.alternateName = SUPERSUBMAG)
  * Loaded via Webflow registered hosted script (Site Head Code).
  *
  * Behavior:
@@ -11,8 +11,9 @@
  *   - Detects locale from <html lang> with URL path fallback ("de" default).
  *   - Injects an @graph with Organization + WebSite linked via @id.
  *   - WebSite.@id is site-wide (https://supersubmag.com/#website), identical
- *     to the Home schema and all isPartOf references; url/inLanguage stay
- *     locale-specific.
+ *     to the Home schema and all isPartOf references. WebSite.url is the
+ *     domain home page (https://supersubmag.com/) for all locales (Google
+ *     site names: one site name per domain); inLanguage stays locale-specific.
  *   - SearchAction target stays locale-aware.
  *   - sameAs lists only verified live SUPERSUB social URLs.
  *
@@ -67,19 +68,19 @@
       var LOCALE_MAP = {
         de: {
           inLanguage: "de-DE",
-          homeUrl:    "https://supersubmag.com/de/",
+          homeUrl:    "https://supersubmag.com/",
           searchUrl:  "https://supersubmag.com/de/search?query={search_term_string}",
           description:"SUPERSUB ist das deutschsprachige Editorial-Medium für Fußballkultur: Drops, Fashion, Lifestyle und Selected Longreads."
         },
         en: {
           inLanguage: "en-GB",
-          homeUrl:    "https://supersubmag.com/en/",
+          homeUrl:    "https://supersubmag.com/",
           searchUrl:  "https://supersubmag.com/en/search?query={search_term_string}",
           description:"SUPERSUB is an editorial platform for football culture: drops, fashion, lifestyle and selected longreads."
         },
         es: {
           inLanguage: "es-ES",
-          homeUrl:    "https://supersubmag.com/es/",
+          homeUrl:    "https://supersubmag.com/",
           searchUrl:  "https://supersubmag.com/es/search?query={search_term_string}",
           description:"SUPERSUB es una plataforma editorial de cultura futbolística: drops, moda, lifestyle y longreads seleccionados."
         }
@@ -112,7 +113,7 @@
             "@type": "WebSite",
             "@id": "https://supersubmag.com/#website",
             "name": "SUPERSUB",
-            "alternateName": "SUPERSUB Magazine",
+            "alternateName": "SUPERSUBMAG",
             "url": L.homeUrl,
             "inLanguage": L.inLanguage,
             "description": L.description,
