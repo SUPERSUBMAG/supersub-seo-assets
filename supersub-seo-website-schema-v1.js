@@ -1,7 +1,7 @@
 /*!
  * SUPERSUB — SEO Phase 1C-A: WebSite + Organization + SearchAction
  * Site-wide JSON-LD injector
- * Version: 1.0.0
+ * Version: 1.1.0 (A20 Paket C: einheitliche WebSite.@id und sameAs)
  * Loaded via Webflow registered hosted script (Site Head Code).
  *
  * Behavior:
@@ -10,6 +10,9 @@
  *     (transition phase: Home Page Head Code still owns one).
  *   - Detects locale from <html lang> with URL path fallback ("de" default).
  *   - Injects an @graph with Organization + WebSite linked via @id.
+ *   - WebSite.@id is site-wide (https://supersubmag.com/#website), identical
+ *     to the Home schema and all isPartOf references; url/inLanguage stay
+ *     locale-specific.
  *   - SearchAction target stays locale-aware.
  *   - sameAs lists only verified live SUPERSUB social URLs.
  *
@@ -100,13 +103,14 @@
             "sameAs": [
               "https://www.instagram.com/supersubmag/",
               "https://www.tiktok.com/@supersubmag",
-              "https://www.facebook.com/people/SUPERSUB/61591167715180/",
+              "https://x.com/SUPERSUB_MAG",
+              "https://www.facebook.com/p/SUPERSUB-61591167715180/",
               "https://www.linkedin.com/company/supersubmag"
             ]
           },
           {
             "@type": "WebSite",
-            "@id": L.homeUrl + "#website",
+            "@id": "https://supersubmag.com/#website",
             "name": "SUPERSUB",
             "alternateName": "SUPERSUB Magazine",
             "url": L.homeUrl,
